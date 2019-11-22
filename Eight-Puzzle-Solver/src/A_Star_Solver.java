@@ -41,7 +41,7 @@ public class A_Star_Solver {
 				
 
 			}
-			if(emptyIndex-1 > 0 && ((emptyIndex / 3) == ((emptyIndex - 1) / 3 ))) { // can move right
+			if(emptyIndex-1 > 0 && ((emptyIndex / 3) == ((emptyIndex - 1) / 3 ))) { // can move left
 				String expandedSet = swap(currentSet,emptyIndex,emptyIndex-1); 
 				if (!exploredSet.contains(expandedSet)) {
 					nodesExpanded++;
@@ -51,7 +51,7 @@ public class A_Star_Solver {
 		
 
 			}
-			if(emptyIndex+1 < 9 && ((emptyIndex / 3) == ((emptyIndex + 1) / 3 ))) { // can move left
+			if(emptyIndex+1 < 9 && ((emptyIndex / 3) == ((emptyIndex + 1) / 3 ))) { // can move right
 				String expandedSet = swap(currentSet,emptyIndex,emptyIndex+1); 
 				if (!exploredSet.contains(expandedSet)) {
 					nodesExpanded++;

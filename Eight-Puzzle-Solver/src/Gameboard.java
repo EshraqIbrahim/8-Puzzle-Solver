@@ -7,7 +7,6 @@ public class Gameboard implements Comparable<Gameboard>{
 	Gameboard parent;
 	String gameBoard = "";
 	int cost = 0;
-	int heuristicType = 1;
 	int heuristicOneValue = 0;
 	int heuristicTwoValue = 0;
 	int totalCost = 0;
@@ -25,7 +24,6 @@ public class Gameboard implements Comparable<Gameboard>{
 	
 		this.gameBoard  = gameBoard;
 		this.cost = cost;
-		this.heuristicType = heuristicType;
 		this.parent = parent;
 		setGameBoard();
 		calculateManhattanheuristic();
@@ -39,9 +37,6 @@ public class Gameboard implements Comparable<Gameboard>{
 		for(int i = 0 ; i < 3; i++) {
 			for(int j = 0 ; j < 3 ; j++) {
 				currentGameBoard[i][j] = Character.getNumericValue(gameBoard.charAt(counter));
-//				System.out.println("Counter"+counter);
-//				System.out.println(gameBoard);
-
 				counter++;
 			}
 		}
@@ -103,16 +98,8 @@ public class Gameboard implements Comparable<Gameboard>{
 	public int compareTo(Gameboard other) {
 		// Returns the comparison of f(n) from both puzzles.
 		// Necessary for implementing the priority queue heuristics.
-		int priority1 = 0;
-		int priority2 = 0;
-		if(heuristicType == 1) {
-			priority1 = cost + heuristicOneValue ;
-			priority2 = other.cost + other.heuristicOneValue;
-		}else {
-			priority1 = cost + heuristicTwoValue ;
-			priority2 = other.cost + other.heuristicTwoValue;
-		}
-	
+		int priority1 = totalCost;
+		int priority2 = other.totalCost;
 		
 		if (priority1 < priority2) {
 			return -1;
